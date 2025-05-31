@@ -11,7 +11,13 @@ const OPENAI_API_KEY = process.env.OPENAI_API_KEY;
 async function generateMCQs(text) {
   if (OPENAI_API_KEY) {
     // Use OpenAI API to generate MCQs
-    const instructions = `Given the following content, generate 5 multiple-choice questions, each with 4 options. Mark which is the correct answer and provide a brief explanation for each.\n\nContent:\n"""${text.slice(0, 4000)}"""\n\nReturn as a strict valid JSON array in the following format:\n[{ 'question': '...', 'options': ['a', 'b', 'c', 'd'], 'correctOption': 'b', 'explanation': '...' }]`;
+    const instructions = `Given the following content, generate 5 multiple-choice questions, each with 4 options. Mark which is the correct answer and provide a brief explanation for each.
+
+Content:
+"""${text.slice(0, 4000)}"""
+
+Return as a strict valid JSON array in the following format:
+[{ 'question': '...', 'options': ['a', 'b', 'c', 'd'], 'correctOption': 'b', 'explanation': '...' }]`;
 
     const response = await axios.post(
       'https://api.openai.com/v1/chat/completions',
