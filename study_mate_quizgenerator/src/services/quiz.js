@@ -11,13 +11,7 @@ const OPENAI_API_KEY = process.env.OPENAI_API_KEY;
 async function generateMCQs(text) {
   if (OPENAI_API_KEY) {
     // Use OpenAI API to generate MCQs
-    const instructions = `Given the following content, generate 5 multiple-choice questions, each with 4 options. Mark which is the correct answer and provide a brief explanation for each.
-
-Content:
-"""${text.slice(0, 4000)}"""
-
-Return as a strict valid JSON array in the following format:
-[{ "question": "...", "options": ["a", "b", "c", "d"], "correctOption": "b", "explanation": "..." }]`;
+    const instructions = `Given the following content, generate 5 multiple-choice questions, each with 4 options. Mark which is the correct answer and provide a brief explanation for each.\n\nContent:\n"""${text.slice(0, 4000)}"""\n\nReturn as a strict valid JSON array in the following format:\n[{ 'question': '...', 'options': ['a', 'b', 'c', 'd'], 'correctOption': 'b', 'explanation': '...' }]`;
 
     const response = await axios.post(
       'https://api.openai.com/v1/chat/completions',
@@ -32,7 +26,7 @@ Return as a strict valid JSON array in the following format:
       },
       {
         headers: {
-          'Authorization': `Bearer ${OPENAI_API_KEY}`,
+          Authorization: `Bearer ${OPENAI_API_KEY}`,
           'Content-Type': 'application/json'
         }
       }
@@ -52,15 +46,15 @@ Return as a strict valid JSON array in the following format:
     // Fallback: generate a dummy MCQ for demo if no API key is present
     return {
       mcqs: [{
-        question: "Which of the following best describes the main idea of the uploaded document?",
+        question: 'Which of the following best describes the main idea of the uploaded document?',
         options: [
-          "A detailed exploration of color theory",
-          "A historical analysis of trade routes",
-          "A summary of astrophysics discoveries",
-          "A guide to gardening in winter"
+          'A detailed exploration of color theory',
+          'A historical analysis of trade routes',
+          'A summary of astrophysics discoveries',
+          'A guide to gardening in winter'
         ],
-        correctOption: "A detailed exploration of color theory",
-        explanation: "This is a sample MCQ. API integration required for live questions."
+        correctOption: 'A detailed exploration of color theory',
+        explanation: 'This is a sample MCQ. API integration required for live questions.'
       }]
     };
   }
