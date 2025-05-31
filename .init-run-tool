@@ -1,0 +1,4 @@
+{
+    "command": "CI=true PORT=<port> HOST=0.0.0.0 npm run dev",
+    "working_directory": "/home/kavia/workspace/code-generation/studymate-quizgenerator-26404-42e3160b/study_mate_quizgenerator"
+}
