@@ -1,4 +1,6 @@
-// This file will export middleware as the application grows
+// Centralized middleware exports for use across the app
+// Add new middleware imports & exports here for scalability.
+
 module.exports = {
-  // Add your middleware here
+  // Future: add custom middleware here (e.g., auth, rate limiting)
 };
