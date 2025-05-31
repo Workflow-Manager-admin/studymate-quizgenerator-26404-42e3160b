@@ -12,7 +12,8 @@ const jsConfig = {
 };
 
 const ignoreConfig = {
-  ignores: ['node_modules/**'],
+  // Ignore node_modules and frontend client folder from backend linting
+  ignores: ['node_modules/**', 'client/**'],
 };
 
 module.exports = [ignoreConfig, jsConfig];
